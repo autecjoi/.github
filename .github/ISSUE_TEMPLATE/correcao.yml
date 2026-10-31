@@ -1,0 +1,28 @@
+name: Correção
+description: Algo já entregue ao cliente que não funciona como deveria
+type: Correção
+assignees: [LucasSiedschlag]
+projects: ["autecjoi/1"]
+body:
+  - type: dropdown
+    id: origem
+    attributes:
+      label: Origem
+      options:
+        - Defeito do cliente
+        - Defeito interno
+    validations:
+      required: true
+  - type: textarea
+    id: contexto
+    attributes:
+      label: Contexto
+    validations:
+      required: true
+  - type: textarea
+    id: pronto
+    attributes:
+      label: Pronto quando
+      value: "- [ ] "
+    validations:
+      required: true

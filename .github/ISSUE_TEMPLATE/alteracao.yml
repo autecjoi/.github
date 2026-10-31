@@ -1,0 +1,19 @@
+name: Alteração
+description: Alteração pedida pelo cliente fora do escopo combinado
+type: Alteração
+assignees: [LucasSiedschlag]
+projects: ["autecjoi/1"]
+body:
+  - type: textarea
+    id: contexto
+    attributes:
+      label: Contexto
+    validations:
+      required: true
+  - type: textarea
+    id: pronto
+    attributes:
+      label: Pronto quando
+      value: "- [ ] "
+    validations:
+      required: true

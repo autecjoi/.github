@@ -1,0 +1,6 @@
+{
+  "name": "Commitlint",
+  "description": "Valida as mensagens de commit do PR em Conventional Commits.",
+  "iconName": "octicon check",
+  "categories": []
+}

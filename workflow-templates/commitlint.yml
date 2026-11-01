@@ -1,0 +1,36 @@
+name: Commitlint
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  commitlint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+      - name: Instalar commitlint
+        run: npm install --no-save @commitlint/cli @commitlint/config-conventional
+      - name: Criar configuração
+        run: |
+          cat > commitlint.config.json <<'JSON'
+          {
+            "extends": ["@commitlint/config-conventional"],
+            "rules": {
+              "body-max-line-length": [0],
+              "footer-max-line-length": [0]
+            }
+          }
+          JSON
+      - name: Validar commits do PR
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: npx commitlint --config commitlint.config.json --from "$BASE_SHA" --to "$HEAD_SHA"
